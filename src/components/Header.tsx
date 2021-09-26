@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
@@ -11,24 +11,10 @@ interface HeaderProps {
 export function Header({ tasksCounter }: HeaderProps) {
   // const tasksCounterText = TODO render 'tarefa' if tasksCounter equals 1, otherwise render 'tarefas'
 
-  // Comecei a armazenar a o texto da contagem para renderizar na tela sem refresh
-  const [tasksCounterText, setTaskCounterText] = useState('');
+  const tasksCounterText = tasksCounter === 1 ? 'tarefa' : 'tarefas'
 
-  useEffect( () =>
-  {
-    //const tasksCounter = 1
-    const numeroTask = tasksCounter
 
-    if(numeroTask === 1){
-      setTaskCounterText('tarefa')
-    } else{
-      setTaskCounterText('tarefas')
-  }
-
-  }, []
-  )
- 
-
+  
   return (
     <View style={styles.container}>
       <Image source={logoImg} />
