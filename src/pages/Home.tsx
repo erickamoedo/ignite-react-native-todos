@@ -26,11 +26,27 @@ export function Home() {
 
   function handleToggleTaskDone(id: number) {
     //TODO - toggle task done if exists
+  
+    
+    // aqui eu filtro as task 
+    const updatedTasks = tasks.map(task => ({...task}))
+
+    const foundItem = updatedTasks.find(item => item.id === id);
+
+    if(!foundItem)
+    return;
+    foundItem.done = !foundItem.done;
+
+    // para nao quebrar o principio da imutabilidade, eu seto dps o update
+    setTasks(updatedTasks);
+
+   
   }
+
 
   function handleRemoveTask(id: number) {
     //TODO - remove task from state
-    console.log('Disparou')
+ 
     setTasks(oldState => oldState.filter( item => item.id !== id )); //listo o estato, so que agora com filtro para tirar ele da selecao
   }
 
